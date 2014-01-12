@@ -105,11 +105,20 @@ public class ZamowienieManagerTest {
 	@Test
 	public void checkFindPickInZam(){
 		
-		Zamowienie zam = zamowienieManager.getAllZam().get(0);
+		ArrayList<Pick> picks = new ArrayList<Pick>();
 		
-		List<Pick> pick = zam.getPicks();
+		picks = zamowienieManager.findPickInZam("RockNRoll", "Tortex");
 		
-		assertEquals(1, pick.getPicksName("Tortex").size());
+		assertEquals(1, picks.size());
+		
+	}
+	
+	@Test
+	public void checkDeletePickFromZam(){
+		
+		zamowienieManager.deletePick("RockNRoll", "Tortex");
+		
+		assertEquals(1, zamowienieManager.getZam("RockNRoll").size());
 		
 	}
 
